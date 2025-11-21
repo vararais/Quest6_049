@@ -19,6 +19,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,9 +35,15 @@ import com.example.navdata.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormIsian(
-    jenisK:List<String> = listOf("Laki-laki","Perempuan"),
-    OnSubmitBtnClick : () -> Unit
+    pilihanJK: List<String> ,
+    onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    modifier: Modifier = Modifier
 ) {
+
+    var txtNama by rememberSaveable { mutableStateOf("")}
+    var txtAlamat by remember {mutableStateOf("")}
+    var txtGender by remember {mutableStateOf("")}
+    val listData: MutableList<String> = mutableListOf(txtNama, txtGender, txtAlamat)
     Scaffold(
         modifier = Modifier,
         topBar = {
@@ -51,13 +62,15 @@ fun FormIsian(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             OutlinedTextField(
-                value = "",
+                value = txtNama,
                 singleLine = true,
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .width(250.dp),
                 label = { Text(text = "Nama Lengkap") },
-                onValueChange = {},
+                onValueChange = {
+                    txtNama = it
+                },
             )
             HorizontalDivider(
                 modifier = Modifier
