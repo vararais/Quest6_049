@@ -7,6 +7,8 @@
     <string name="alamat">ALAMAT</string>
     <string name="tampil">Tampilan Data</string>
     <string name="home">Form Isian</string>
+    <string name="gender">Gender</string>
+    <string name="nama">NAMA</string>
     <string name="laki">Laki-laki</string>
     <string name="wanita">Perempuan</string>
 </resources>
