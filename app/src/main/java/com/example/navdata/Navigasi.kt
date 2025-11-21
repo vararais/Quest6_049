@@ -24,7 +24,7 @@ enum class Navigasi {
 
 @Composable
 fun DataApp(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     viewModel: SiswaViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ){
